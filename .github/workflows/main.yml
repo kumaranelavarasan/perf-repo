@@ -1,0 +1,35 @@
+name: Run JPetStore JMeter Test
+
+on:
+  workflow_dispatch:      # Allows manual trigger
+  push:
+    paths:
+      - 'jpetstore.jmx'   # Trigger on changes to the JMX file
+
+jobs:
+  run-jmeter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+
+      - name: Download JMeter
+        run: |
+          wget https://downloads.apache.org//jmeter/binaries/apache-jmeter-5.6.3.tgz
+          tar -xzf apache-jmeter-5.6.3.tgz
+
+      - name: Run JMeter Test Plan
+        run: |
+          ./apache-jmeter-5.6.3/bin/jmeter -n -t jpetstore.jmx -l result.jtl
+
+      - name: Upload JMeter Results
+        uses: actions/upload-artifact@v4
+        with:
+          name: jmeter-results
+          path: result.jtl
