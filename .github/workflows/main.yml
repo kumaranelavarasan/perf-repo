@@ -1,4 +1,4 @@
-name: Run JPetStore JMeter Test
+name: Run JPetStore JMeter Test (InfluxDB Cloud)
 
 on:
   workflow_dispatch:      # Allows manual trigger
@@ -24,11 +24,26 @@ jobs:
           wget https://downloads.apache.org//jmeter/binaries/apache-jmeter-5.6.3.tgz
           tar -xzf apache-jmeter-5.6.3.tgz
 
+      - name: Inject InfluxDB endpoint/token into JMX
+        run: |
+          # If your JMX file uses raw <INFLUXDB_URL> and <INFLUXDB_TOKEN>:
+          sed -i "s|<INFLUXDB_URL>|${{ secrets.INFLUXDB_URL }}|g" jpetstore.jmx
+          sed -i "s|<INFLUXDB_TOKEN>|${{ secrets.INFLUXDB_TOKEN }}|g" jpetstore.jmx
+          # If your JMX file uses &lt;INFLUXDB_URL&gt; and &lt;INFLUXDB_TOKEN&gt; (XML-escaped), uncomment these lines:
+          # sed -i "s|&lt;INFLUXDB_URL&gt;|${{ secrets.INFLUXDB_URL }}|g" jpetstore.jmx
+          # sed -i "s|&lt;INFLUXDB_TOKEN&gt;|${{ secrets.INFLUXDB_TOKEN }}|g" jpetstore.jmx
+
+      - name: Debug: Show InfluxDB values in JMX file
+        run: |
+          echo "Checking influxdbUrl and influxdbToken in jpetstore.jmx:"
+          grep -A 2 influxdbUrl jpetstore.jmx || echo "influxdbUrl not found"
+          grep -A 2 influxdbToken jpetstore.jmx || echo "influxdbToken not found"
+
       - name: Run JMeter Test Plan
         run: |
           ./apache-jmeter-5.6.3/bin/jmeter -n -t jpetstore.jmx -l result.jtl
 
-      - name: Upload JMeter Results
+      - name: Upload JMeter Results (JTL)
         uses: actions/upload-artifact@v4
         with:
           name: jmeter-results
