@@ -24,12 +24,13 @@ jobs:
           wget https://downloads.apache.org//jmeter/binaries/apache-jmeter-5.6.3.tgz
           tar -xzf apache-jmeter-5.6.3.tgz
 
-      - name: Inject InfluxDB endpoint/token into JMX
+      - name: "Inject InfluxDB endpoint/token into JMX"
         run: |
-          sed -i "s|<INFLUXDB_URL>|${{ secrets.INFLUXDB_URL }}|g" jpetstore.jmx
-          sed -i "s|<INFLUXDB_TOKEN>|${{ secrets.INFLUXDB_TOKEN }}|g" jpetstore.jmx
+          # For XML-escaped placeholders in the JMX file
+          sed -i "s|&lt;INFLUXDB_URL&gt;|${{ secrets.INFLUXDB_URL }}|g" jpetstore.jmx
+          sed -i "s|&lt;INFLUXDB_TOKEN&gt;|${{ secrets.INFLUXDB_TOKEN }}|g" jpetstore.jmx
 
-      - name: Debug Show InfluxDB values in JMX file
+      - name: "Debug: Show InfluxDB values in JMX file"
         run: |
           echo "Checking influxdbUrl and influxdbToken in jpetstore.jmx:"
           grep -A 2 influxdbUrl jpetstore.jmx || echo "influxdbUrl not found"
