@@ -1,10 +1,10 @@
-name: Run JPetStore JMeter Test (InfluxDB Cloud)
+name: Run JPetStore JMeter Test
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:      # Allows manual trigger
   push:
     paths:
-      - 'jpetstore.jmx'
+      - 'jpetstore.jmx'   # Trigger on changes to the JMX file
 
 jobs:
   run-jmeter:
@@ -24,16 +24,11 @@ jobs:
           wget https://downloads.apache.org//jmeter/binaries/apache-jmeter-5.6.3.tgz
           tar -xzf apache-jmeter-5.6.3.tgz
 
-      - name: Inject InfluxDB endpoint/token into JMX
-        run: |
-          sed -i "s|<INFLUXDB_URL>|${{ secrets.INFLUXDB_URL }}|g" jpetstore.jmx
-          sed -i "s|<INFLUXDB_TOKEN>|${{ secrets.INFLUXDB_TOKEN }}|g" jpetstore.jmx
-
       - name: Run JMeter Test Plan
         run: |
           ./apache-jmeter-5.6.3/bin/jmeter -n -t jpetstore.jmx -l result.jtl
 
-      - name: Upload JMeter Results (JTL)
+      - name: Upload JMeter Results
         uses: actions/upload-artifact@v4
         with:
           name: jmeter-results

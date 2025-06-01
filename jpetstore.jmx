@@ -602,7 +602,7 @@
             </elementProp>
             <elementProp name="influxdbUrl" elementType="Argument">
               <stringProp name="Argument.name">influxdbUrl</stringProp>
-              <stringProp name="Argument.value">&lt;INFLUXDB_URL&gt;</stringProp>
+              <stringProp name="Argument.value">https://us-east-1-1.aws.cloud2.influxdata.com/api/v2/write?org=QA&amp;bucket=jmeter_results_1&amp;precision=ns</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
             <elementProp name="application" elementType="Argument">
@@ -642,7 +642,7 @@
             </elementProp>
             <elementProp name="influxdbToken" elementType="Argument">
               <stringProp name="Argument.name">influxdbToken</stringProp>
-              <stringProp name="Argument.value">&lt;INFLUXDB_TOKEN&gt;</stringProp>
+              <stringProp name="Argument.value">N9Tz5Pm28ZM4e7-MUBT9IyOyvQpeUBFy37lkCKsW1RhyR3b8NHIsTDRMvuMEcNoc5M9HzsIrTTTkBr9dgKWVuw==</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
           </collectionProp>
