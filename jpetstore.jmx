@@ -5,6 +5,8 @@
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
         <collectionProp name="Arguments.arguments"/>
       </elementProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
     </TestPlan>
     <hashTree>
       <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
@@ -47,12 +49,12 @@
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="JPS_LaunchJPetStore">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="JPS_LaunchJPetStore" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="LaunchJPetStore-80">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="LaunchJPetStore-80" enabled="true">
             <stringProp name="HTTPSampler.domain">petstore.octoperf.com</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
@@ -137,7 +139,7 @@
               <stringProp name="BoundaryExtractor.match_number">1</stringProp>
             </BoundaryExtractor>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="-542112152">Sign In</stringProp>
               </collectionProp>
@@ -149,12 +151,12 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="JPS_ClickFish">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="JPS_ClickFish" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="ClickFish-90">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="ClickFish-90" enabled="true">
             <stringProp name="HTTPSampler.domain">petstore.octoperf.com</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
@@ -240,7 +242,7 @@
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="2053980420">Tiger Shark</stringProp>
               </collectionProp>
@@ -252,12 +254,12 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="JPS_SelectFish">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="JPS_SelectFish" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="SelectFish-105">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="SelectFish-105" enabled="true">
             <stringProp name="HTTPSampler.domain">petstore.octoperf.com</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
@@ -343,7 +345,7 @@
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="-649973466">Add to Cart</stringProp>
               </collectionProp>
@@ -355,12 +357,12 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="JPS_AddToCart">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="JPS_AddToCart" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="AddToCart-108">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="AddToCart-108" enabled="true">
             <stringProp name="HTTPSampler.domain">petstore.octoperf.com</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
@@ -446,7 +448,7 @@
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="3578073">Proceed to Checkout</stringProp>
               </collectionProp>
@@ -458,12 +460,12 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="JPS_CheckOut">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="JPS_CheckOut" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CheckOut-110">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CheckOut-110" enabled="true">
             <stringProp name="HTTPSampler.domain">petstore.octoperf.com</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
@@ -542,7 +544,7 @@
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="1496959981">Need a user name and password</stringProp>
               </collectionProp>
@@ -589,6 +591,64 @@
         </objProp>
         <stringProp name="filename"></stringProp>
       </ResultCollector>
+      <hashTree/>
+      <BackendListener guiclass="BackendListenerGui" testclass="BackendListener" testname="Backend Listener">
+        <elementProp name="arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="influxdbMetricsSender" elementType="Argument">
+              <stringProp name="Argument.name">influxdbMetricsSender</stringProp>
+              <stringProp name="Argument.value">org.apache.jmeter.visualizers.backend.influxdb.HttpMetricsSender</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="influxdbUrl" elementType="Argument">
+              <stringProp name="Argument.name">influxdbUrl</stringProp>
+              <stringProp name="Argument.value">&lt;INFLUXDB_URL&gt;</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="application" elementType="Argument">
+              <stringProp name="Argument.name">application</stringProp>
+              <stringProp name="Argument.value">jpetstore</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="measurement" elementType="Argument">
+              <stringProp name="Argument.name">measurement</stringProp>
+              <stringProp name="Argument.value">jmeter</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="summaryOnly" elementType="Argument">
+              <stringProp name="Argument.name">summaryOnly</stringProp>
+              <stringProp name="Argument.value">false</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="samplersRegex" elementType="Argument">
+              <stringProp name="Argument.name">samplersRegex</stringProp>
+              <stringProp name="Argument.value">.*</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="percentiles" elementType="Argument">
+              <stringProp name="Argument.name">percentiles</stringProp>
+              <stringProp name="Argument.value">99;95;90</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="testTitle" elementType="Argument">
+              <stringProp name="Argument.name">testTitle</stringProp>
+              <stringProp name="Argument.value">Test name</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="eventTags" elementType="Argument">
+              <stringProp name="Argument.name">eventTags</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="influxdbToken" elementType="Argument">
+              <stringProp name="Argument.name">influxdbToken</stringProp>
+              <stringProp name="Argument.value">&lt;INFLUXDB_TOKEN&gt;</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </elementProp>
+        <stringProp name="classname">org.apache.jmeter.visualizers.backend.influxdb.InfluxdbBackendListenerClient</stringProp>
+      </BackendListener>
       <hashTree/>
     </hashTree>
   </hashTree>
