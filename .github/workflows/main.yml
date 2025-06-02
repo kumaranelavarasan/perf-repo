@@ -1,7 +1,12 @@
-name: Run JPetStore JMeter Test (Token Only Injection)
+name: Run JPetStore JMeter Test
 
 on:
   workflow_dispatch:
+    inputs:
+      users:
+        description: 'Number of users (threads) for JMeter test'
+        required: true
+        default: '10'
   push:
     paths:
       - 'jpetstore.jmx'
@@ -24,13 +29,17 @@ jobs:
           wget https://downloads.apache.org//jmeter/binaries/apache-jmeter-5.6.3.tgz
           tar -xzf apache-jmeter-5.6.3.tgz
 
-      - name: "Inject only InfluxDB token from secret"
+      - name: Inject users value into JMX
+        run: |
+          sed -i "s#&lt;USERS&gt;#${{ github.event.inputs.users }}#g" jpetstore.jmx
+
+      - name: Inject only InfluxDB token from secret
         run: |
           sed -i "s#&lt;INFLUXDB_TOKEN&gt;#${{ secrets.INFLUXDB_TOKEN }}#g" jpetstore.jmx
 
-      - name: Inject users value into JMX
+      - name: Debug: Show JMX users
         run: |
-          # sed -i "s#&lt;USERS&gt;#${{ github.event.inputs.users }}#g" jpetstore.jmx
+          grep -A 2 ThreadGroup.num_threads jpetstore.jmx
 
       - name: Run JMeter Test Plan
         run: |
