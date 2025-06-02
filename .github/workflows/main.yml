@@ -37,7 +37,7 @@ jobs:
         run: |
           sed -i "s#&lt;INFLUXDB_TOKEN&gt;#${{ secrets.INFLUXDB_TOKEN }}#g" jpetstore.jmx
 
-      - name: Debug: Show JMX users
+      - name: "Debug: Show JMX users"
         run: |
           grep -A 2 ThreadGroup.num_threads jpetstore.jmx
 
