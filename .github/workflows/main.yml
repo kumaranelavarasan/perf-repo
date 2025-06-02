@@ -26,7 +26,7 @@ jobs:
 
       - name: "Inject only InfluxDB token from secret"
         run: |
-          sed -i "s#<INFLUXDB_TOKEN>#${{ secrets.INFLUXDB_TOKEN }}#g" jpetstore.jmx
+          sed -i "s#&lt;INFLUXDB_TOKEN&gt;>#${{ secrets.INFLUXDB_TOKEN }}#g" jpetstore.jmx
 
       - name: "Debug: Show InfluxDB values in JMX file"
         run: |
