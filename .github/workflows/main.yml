@@ -28,10 +28,9 @@ jobs:
         run: |
           sed -i "s#&lt;INFLUXDB_TOKEN&gt;#${{ secrets.INFLUXDB_TOKEN }}#g" jpetstore.jmx
 
-      - name: "Debug: Show InfluxDB values in JMX file"
+      - name: Inject users value into JMX
         run: |
-          echo "Checking influxdbToken in jpetstore.jmx:"
-          grep -A 2 influxdbToken jpetstore.jmx || echo "influxdbToken not found"
+          # sed -i "s#&lt;USERS&gt;#${{ github.event.inputs.users }}#g" jpetstore.jmx
 
       - name: Run JMeter Test Plan
         run: |
