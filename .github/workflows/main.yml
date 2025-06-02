@@ -7,6 +7,14 @@ on:
         description: 'Number of users (threads) for JMeter test'
         required: true
         default: '10'
+      rampup:
+        description: 'Ramp-up Period in seconds'
+        required: true
+        default: '60'
+      duration:
+        description: 'Test Duration in seconds'
+        required: true
+        default: '120'
   push:
     paths:
       - 'jpetstore.jmx'
@@ -32,14 +40,12 @@ jobs:
       - name: Inject users value into JMX
         run: |
           sed -i "s#&lt;USERS&gt;#${{ github.event.inputs.users }}#g" jpetstore.jmx
+          sed -i "s#&lt;RAMPUP&gt;#${{ github.event.inputs.rampup }}#g" jpetstore.jmx
+          sed -i "s#&lt;DURATION&gt;#${{ github.event.inputs.duration }}#g" jpetstore.jmx
 
       - name: Inject only InfluxDB token from secret
         run: |
           sed -i "s#&lt;INFLUXDB_TOKEN&gt;#${{ secrets.INFLUXDB_TOKEN }}#g" jpetstore.jmx
-
-      - name: "Debug: Show JMX users"
-        run: |
-          grep -A 2 ThreadGroup.num_threads jpetstore.jmx
 
       - name: Run JMeter Test Plan
         run: |
